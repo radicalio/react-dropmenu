@@ -121,7 +121,7 @@ module.exports = {
 ```
 The `items` array can contain an array of child page objects!
 
-### Import NavBar
+### Approach 1 - Import NavBar
 Next, import NavBar class from the package
 
 ```sh
@@ -148,7 +148,7 @@ Setting useButtons also adds the "asButton" style to the container.
 Internally the NavBar creates MenuAnchor components for each page object. A MenuAnchor 
 is a styled "a" link with a DropMenu components attached. 
 
-### or Import DropMenu 
+### or Approach 2 - Import DropMenu 
 
 If you want to use the drop menu yourself directly without the NavBar you can import 
 and use the DropMenu.
@@ -157,7 +157,7 @@ and use the DropMenu.
 import { DropMenu } from "react-dropmenu"
 ```
 Then use the Drop Menu on your 
-```jsx harmony
+```sh
 <MenuAnchor 
     page={page}        // (object) one page data object, with child items
     navClass="site-nav-item" // css class for link
