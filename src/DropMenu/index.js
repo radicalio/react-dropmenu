@@ -5,7 +5,6 @@ import { MenuItem } from "../MenuItem";
 import { MenuContent } from "../MenuContent";
 import utils from "../utils/index";
 const { dismissTimeout, possiblyActivate } = utils;
-import "../menu.css"
 
 export function DropMenu ({ top, left, tolerance, direction, data, onExit, onMouseEnter  }) {
     

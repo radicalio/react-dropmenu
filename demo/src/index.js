@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
 import logo from "../../img/Radical-I-O-Logo.png"
-import "./demo.css"
+import "./style/demo.css"
+import "./style/menu.css"
 
 import { NavBar } from "../../src/index"
 import { MenuData } from "./MOCK_DATA"
