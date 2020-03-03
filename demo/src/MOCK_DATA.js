@@ -1,7 +1,5 @@
-//import React from "react";
-
 module.exports = {
-    Menu: [
+    MenuData: [
         {
             title: "All",
             type: "anchor",

@@ -11,10 +11,12 @@ body {
 .site-header {
 	/*border: 1px solid deeppink;*/
 	background-color: #FFFFFF;
-	height: 80px;
+	/*padding: 15px;*/
+	height: 90px;
 }
 .site-header img {
-	margin: 8px;
+	margin: 20px 0 20px 30px;
+	height: 50px;
 }
 .site-main {
 	/*padding: 4vw 0;*/

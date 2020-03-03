@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import useDimensions from "react-use-dimensions"
 import DropMenu from "../index"
 
-const MenuAnchor = ({ page, navClass, id }) => {
+const MenuAnchor = ({ page, navClass, id, children }) => {
 
     const tolerance = "50";
     //const url = "/" + page.slug;
     const url = page.url;
-    const title = page.title;
     const items = page.items;
     const type = page.type;
     const hasChildren = items && items.length > 0
@@ -17,6 +16,7 @@ const MenuAnchor = ({ page, navClass, id }) => {
     const [direction, setDirection] = useState( "RIGHT" );
     const [position, setPosition] = useState( { id: "none", x: 0, y: 0 } );
     const [ref, dims] = useDimensions();
+    const content = children || page.title;
 
     async function handleMouseEnter(event) {
         let ypos = event.currentTarget.offsetTop + event.currentTarget.offsetHeight;
@@ -53,7 +53,7 @@ const MenuAnchor = ({ page, navClass, id }) => {
                 onMouseLeave={handleMouseLeave}
                 ref={ref}
             >
-                {title}
+                {content}
             </a>
             {/* visible = hover state // hasChildren = only show menu for children */}
             {visible && hasChildren &&
@@ -62,7 +62,6 @@ const MenuAnchor = ({ page, navClass, id }) => {
                     top={position.y}
                     left={position.x}
                     tolerance={tolerance}
-                    //dimensions={dims}
                     data={items}
                     onExit={onExit}
                     onMouseEnter={enterMenu}

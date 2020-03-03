@@ -18,17 +18,17 @@ const NavBar = ({ pages, navClass, useButtons }) => {
         classesList.push("asButton");
     }
     const classes = classesList.join(" ");
+    console.log("Pages", pages);
     return (
         <div className={classes}>
-            {/*<MenuAnchor page={home} navClass={navClass} id={"mega-menu-home"} key={-1}/>*/}
             {pages.map((page, i) => {
                 const id = "mega-menu-" + i;
-                //const url = "/" + navitem.node.slug
-                //const page = navitem.node;
                 return (
-                    <MenuAnchor page={page} navClass={navClass} id={id} key={i}/>
+                    <MenuAnchor page={page} navClass={navClass} id={id} key={i}>
+                        {page.title}
+                    </MenuAnchor>
                 )
-                // TODO: Gatsby Link
+                // TODO: For Gatsby use Link
                 // return <Link className={navClass} to={url} key={i}>{navitem.node.title}</Link>
             })}
         </div>
@@ -51,6 +51,7 @@ NavBar.propTypes = {
 
 export default NavBar
 
+// For Gatsby
 //            if (navitem.node.url.match(/^\s?http(s?)/gi)) {
 //                return <a className={navClass} href={navitem.node.url} key={i} target="_blank" rel="noopener noreferrer">{navitem.node.title}</a>
 //            } else {
