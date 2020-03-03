@@ -1,7 +1,9 @@
 
-![preview](./img/react-dropmenu.png) 
-
 # react-dropmenu 
+
+[React DropMenu](https://www.github.com/radicalio/react-dropmenu)
+
+![preview](./img/react-dropmenu.png) 
 
 The React DropMenu is a component that can take JSON data and show drop-down style
 vertical menus. There module is made off of a few distinct components. It is data driven,
@@ -10,13 +12,17 @@ structure of page objects where each leayer in the tree is an array of `page` ob
 each page can contain children in the page.items property which should also contain an
 array of page objects.
 
-Work A more natural feeling navigation menu component that can distinguish an 
-option selection and an attempt to navigate to the submenu's content.
+This is partially based on work done in the react-mega-menu project by Baruch Hen, which 
+emulates earlier 'menu-aim' style menus in other frameworks. His goal was to produce a 
+more natural feeling navigation menu component that can distinguish between vertical 
+menu traversal and a horizontal attempt to navigate to the submenu's content.
+
+This module tries to make it a bit easier to use in your own project. You supply your own
+data, and alter the CSS stylesheets. It comes with usable defaults for the style.
 
 ![favicon-32x32](./img/favicon.png) 
 [![NPM Version][npm-image]][npm-url]
 [![Downloads Stats][npm-downloads]][npm-url]
-
 
 
 Major Components are:
