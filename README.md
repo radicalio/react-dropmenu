@@ -1,12 +1,57 @@
-<p align="center"><img src="./img/react-supply-store.png"></p>
+
+![preview](./img/react-dropmenu.png) 
 
 # react-dropmenu 
-> A more natural feeling navigation menu component that can distinguish an 
+
+The React DropMenu is a component that can take JSON data and show drop-down style
+vertical menus. There module is made off of a few distinct components. It is data driven,
+and needs to be supplied with JSON (or javascript object) data. The data is tree like 
+structure of page objects where each leayer in the tree is an array of `page` objects.
+each page can contain children in the page.items property which should also contain an
+array of page objects.
+
+Work A more natural feeling navigation menu component that can distinguish an 
 option selection and an attempt to navigate to the submenu's content.
 
 ![favicon-32x32](./img/favicon.png) 
 [![NPM Version][npm-image]][npm-url]
 [![Downloads Stats][npm-downloads]][npm-url]
+
+
+
+Major Components are:
+
+- *NavBar*: a horizontal navigation bar, as might be used in a website header. Using 
+an array of `page` objects as data, it shows a horizontal set of navigation links 
+(using MenuAnchor). 
+Each will activate when a mouse hovers over them to show a menu below (DropMenu) 
+using the `page.items` array of child pages in the page data.
+- *MenuAnchor*: A component that wraps its content with a link and wires in a 
+drop menu to launch from it. a single item 
+- *DropMenu*: A component that takes. Using an array of page objects, it shows a vertical 
+menu of titles. Moving the mouse down over each item may also then show a `MenuContent` 
+panel beside the drop menu. THe framework tries to keep the panel on screen and may 
+choose to show the panel on the right or left of the vertical drop menu.
+- *MenuContent*: Shows a panel for the Drop Menu item you are hovering over. There 
+are multiple panel types that it might show, based on the data. 
+
+Panel Types:
+
+- Card: A visual card for an item without children 
+- List: A list style presentation, showing this item as a header and a list of 
+its children. 
+- ListList: A List of lists presenation, showing this item as a header. It then shows 
+sections for each of its children, where a section is a subheader and a further list 
+of pages. This becomes a dense navigation style. 
+
+#### Card
+![Card](./img/Card.png) 
+
+#### List
+![List](./img/List.png)
+
+#### ListList
+![ListList](./img/ListList.png)
 
 
 ## Installation
@@ -145,8 +190,8 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 https://github.com/SUPPLYcom/react-mega-menu  
 https://github.com/kamens/jQuery-menu-aim  
 
-<!-- Markdown link & img dfn's 
+<!-- Markdown link & img dfn's -->
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/react-mega-menu
-[npm-downloads]: https://img.shields.io/npm/dm/react-mega-menu.svg?style=flat-square
--->
+[npm-url]: https://www.npmjs.com/package/react-dropmenu
+[npm-downloads]: https://img.shields.io/npm/dm/react-dropmenu.svg?style=flat-square
+
