@@ -34,10 +34,10 @@ Each will activate when a mouse hovers over them to show a menu below (DropMenu)
 using the `page.items` array of child pages in the page data.
 - *MenuAnchor*: A component that wraps its content with a link and wires in a 
 drop menu to launch from it. a single item 
-- *DropMenu*: A component that takes. Using an array of page objects, it shows a vertical 
-menu of titles. Moving the mouse down over each item may also then show a `MenuContent` 
-panel beside the drop menu. THe framework tries to keep the panel on screen and may 
-choose to show the panel on the right or left of the vertical drop menu.
+- *DropMenu*: Using an array of page objects, it shows a vertical menu of titles. 
+Moving the mouse down over each item may also then show a `MenuContent` panel beside 
+the drop menu. THe framework tries to keep the panel on screen and may choose to show 
+the panel on the right or left of the vertical drop menu.
 - *MenuContent*: Shows a panel for the Drop Menu item you are hovering over. There 
 are multiple panel types that it might show, based on the data. 
 
