@@ -18,21 +18,26 @@ const NavBar = ({ pages, navClass, useButtons }) => {
         classesList.push("asButton");
     }
     const classes = classesList.join(" ");
-    console.log("Pages", pages);
-    return (
-        <div className={classes}>
-            {pages.map((page, i) => {
-                const id = "mega-menu-" + i;
-                return (
-                    <MenuAnchor page={page} navClass={navClass} id={id} key={i}>
-                        {page.title}
-                    </MenuAnchor>
-                )
-                // TODO: For Gatsby use Link
-                // return <Link className={navClass} to={url} key={i}>{navitem.node.title}</Link>
-            })}
-        </div>
-    )
+    //console.log("Pages", pages);
+    if (!pages || !page.length) {
+        return <Fragment />
+    } else {
+        console.log("Pages", pages);
+        return (
+            <div className={classes}>
+                {pages.map((page, i) => {
+                    const id = "mega-menu-" + i;
+                    return (
+                        <MenuAnchor page={page} navClass={navClass} id={id} key={i}>
+                            {page.title}
+                        </MenuAnchor>
+                    )
+                    // TODO: For Gatsby use Link
+                    // return <Link className={navClass} to={url} key={i}>{navitem.node.title}</Link>
+                })}
+            </div>
+        )
+    }
 }
 
 NavBar.defaultProps = {
