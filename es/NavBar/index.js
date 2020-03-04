@@ -23,7 +23,7 @@ var NavBar = function NavBar(_ref) {
     }
     var classes = classesList.join(" ");
     //console.log("Pages", pages);
-    if (!pages || !page.length) {
+    if (!pages || !pages.length) {
         return React.createElement(Fragment, null);
     } else {
         console.log("Pages", pages);

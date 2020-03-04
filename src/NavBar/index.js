@@ -19,7 +19,7 @@ const NavBar = ({ pages, navClass, useButtons }) => {
     }
     const classes = classesList.join(" ");
     //console.log("Pages", pages);
-    if (!pages || !page.length) {
+    if (!pages || !pages.length) {
         return <Fragment />
     } else {
         console.log("Pages", pages);
