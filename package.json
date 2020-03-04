@@ -8,7 +8,7 @@
     "css",
     "es",
     "lib",
-    "umd"
+    "img/Mountain.png"
   ],
   "scripts": {
     "build": "nwb build-react-component",
