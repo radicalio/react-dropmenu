@@ -46,6 +46,12 @@ are multiple panel types that it might show, based on the data.
  
 ![Card](./img/Card.png) 
 
+The image shows a `NavBar`, with its first item 'All' opened to show its children as a 
+`DropMenu`. The 'Enterprise' item was hovered using the mouse and so its `Card` panel is shown.  
+
+In the data, the NavBar was a `page` object, which had children. One of the children is 
+'Enterprise'. Here is the 'Enterprise' page object:
+
 ```JSON
 {
     "title": "Enterprise",
@@ -63,6 +69,12 @@ are multiple panel types that it might show, based on the data.
  its children as found in the items array. 
  
 ![List](./img/List.png)
+
+The image shows a `NavBar`, with its first item 'All' opened to show its children as a 
+`DropMenu`. The 'CaseStudies' item was hovered using the mouse and so its `List` panel is shown.
+
+In the data, the NavBar was a `page` object, which had children. One of the children is 
+'Enterprise'. Here is the 'Case Studies' page object:
 
 ```JSON
 {
@@ -99,6 +111,18 @@ are multiple panel types that it might show, based on the data.
  list of pages. This becomes a dense navigation style. 
 
 ![ListList](./img/ListList.png)
+
+
+The image shows a `NavBar`, with its first item 'All' opened to show its children as a 
+`DropMenu`. The 'Ideas' child item was hovered using the mouse and so its `ListList` panel is shown.
+
+For the ListList content panel image: 
+- the NavBar was a `page` object, which had children
+- 'All': is one of the children and is also page object, as a child in a NavBar is is 
+shown using `MenuAnchor`
+- 'All' has an `items` array of children. These children are shown using a `DropMenu`
+- 'Ideas' (the top level shown in the JSON shown) is one of the children of of 'All'
+- 'Ideas' is of type `ListList`. It is being used to show a Content Panel with 3 levels of data.
 
 
 ```JSON
@@ -156,13 +180,19 @@ are multiple panel types that it might show, based on the data.
 ```
 
 It should be noted that these examples are all for Content Panel types. Content 
-Panels are shown from an item in a DropMenu. 3 levels of page objects are shown in 
-the ListList JSON example, but by looking at the image you can tell that... 
+Panels are shown from an item in a DropMenu. The JSON shown is only the portion 
+that relates to the DropMenu item and its Content Panel. 
 
-- 'All': page object, which is used as a MenuAnchor
-- 'All' has an items array of children, which are being used to display a Drop Menu
-- 'Ideas' (the top level shown in the JSON) is one of the children of this array, 
-and is of type `ListList`. It is being used to show a Content Panel with 3 
+For example 3 levels of page objects are shown in the `ListList` panel type. 
+The image as shown would be created with 4 levels. 
+
+- `NavBar` -> the JSON is supplied here. This is the top level, and is an array of `page` objects.
+- `MenuAnchor` -> each `page` object in the array is used with a `MenuAnchor` 
+- `DropMenu` -> as part of a `MenuAnchor`, a `DropMenu` is created using the `items` array of the 
+`page` which provided to the `MenuAnchor` 
+- Each page in a `DropMenu` is potentially a further array of `pages` (for List or ListList types) 
+
+Example [JSON data](https://github.com/radicalio/react-dropmenu/blob/master/demo/src/MOCK_DATA.js) is in the 'demo' directory.
 
 
 ## Installation
@@ -191,7 +221,7 @@ styled as buttons. using the useButtons boolean.
 ### Data
 You will need to load data. I expect that you will do this as JSON data from an API, 
 but the demo shows loading data as a javascript object statically. If using the static 
-data approach, the data must be an exported as an object called `MenuData` containg an 
+data approach, the data must be an exported as an object called `MenuData` containing an 
 array of page objects. 
 
 ```sh
@@ -284,6 +314,14 @@ Take a look at the internal implementation of the `MenuAnchor` to learn how it w
 1.  Clone repo: `git clone ...`
 2.  run `npm install`
 3.  run `npm start` to see a live demo
+
+
+# About Radical I/O
+
+Radical I/O Technology [radical.io](http://radical.io) is a software development partner,
+located in Vancouver Canada. We work with customers to build modern and manageable software. 
+
+
 
 ## Meta
 
