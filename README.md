@@ -1,7 +1,7 @@
 
 # react-dropmenu 
 
-[React DropMenu](https://www.github.com/radicalio/react-dropmenu)
+![favicon-32x32](./img/favicon.png) [React DropMenu](https://www.github.com/radicalio/react-dropmenu)
 
 ![preview](./img/react-dropmenu.png) 
 
@@ -20,10 +20,6 @@ menu traversal and a horizontal attempt to navigate to the submenu's content.
 This module tries to make it a bit easier to use in your own project. You supply your own
 data, and alter the CSS stylesheets. It comes with usable defaults for the style.
 
-![favicon-32x32](./img/favicon.png) 
-[![NPM Version][npm-image]][npm-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 
 Major Components are:
 
@@ -41,23 +37,132 @@ the panel on the right or left of the vertical drop menu.
 - *MenuContent*: Shows a panel for the Drop Menu item you are hovering over. There 
 are multiple panel types that it might show, based on the data. 
 
-Panel Types:
-
-- Card: A visual card for an item without children 
-- List: A list style presentation, showing this item as a header and a list of 
-its children. 
-- ListList: A List of lists presenation, showing this item as a header. It then shows 
-sections for each of its children, where a section is a subheader and a further list 
-of pages. This becomes a dense navigation style. 
+## Panel Types:
 
 #### Card
+
+ - Card: A visual card for an item without children. The items array will be ignored. 
+ - *Card Panel layouts are still a work in progress
+ 
 ![Card](./img/Card.png) 
 
+```JSON
+{
+    "title": "Enterprise",
+    "type": "card",
+    "content": "Enterprise content",
+    "id": "1003",
+    "url": "/enterprise",
+    "items": []
+}
+```
+
 #### List
+
+ - List: A list style presentation, showing this item as a header and a list of 
+ its children as found in the items array. 
+ 
 ![List](./img/List.png)
 
+```JSON
+{
+    "title": "Case Studies",
+    "type": "list",
+    "content": "Case Studies",
+    "id": "1006",
+    "url": "/case-studies",
+    "items": [
+        {
+            "title": "City Project",
+            "type": "card",
+            "content": "<div class='nav-card'>City Project</div>",
+            "id": "100601",
+            "url": "/myrichmond",
+            "items": []
+        },
+        {
+            "title": "Bank Projectr",
+            "type": "card",
+            "content": "<div class='nav-card'>Bank Project</div>",
+            "id": "100602",
+            "url": "/central1",
+            "items": []
+        }
+    ]
+}
+```
+
 #### ListList
+
+ - ListList: A List of lists presentation, showing this item's title as a header. It then shows 
+ section groupings for each of this item's children, where a section is a subheader and a further 
+ list of pages. This becomes a dense navigation style. 
+
 ![ListList](./img/ListList.png)
+
+
+```JSON
+{
+    "title": "Ideas",
+    "type": "list-list",
+    "content": "",
+    "id": "5",
+    "url": "/ideas",
+    "items": [
+        {
+            "title": "Ideas Group 0",
+            "type": "list",
+            "content": "Ideas 50 (no children)",
+            "id": "50",
+            "url": "/ideas/50",
+            "items": [
+                {
+                    "title": "Ideas 501",
+                    "type": "card",
+                    "content": "Ideas 501",
+                    "id": "501",
+                    "url": "/ideas/501",
+                    "items": []
+                }            
+            ]
+        },
+        {
+            "title": "Ideas Group 1",
+            "type": "list",
+            "content": "Ideas 51",
+            "id": "51",
+            "url": "/ideas/51",
+            "items": [
+                {
+                    "title": "Ideas 511",
+                    "type": "card",
+                    "content": "Ideas 511",
+                    "id": "511",
+                    "url": "/ideas/511",
+                    "items": []
+                },
+                {
+                    "title": "Ideas 512",
+                    "type": "card",
+                    "content": "Ideas 1512",
+                    "id": "512",
+                    "url": "/ideas/512",
+                    "items": []
+                }
+            ]
+        }
+    ]
+}
+```
+
+It should be noted that these examples are all for Content Panel types. Content 
+Panels are shown from an item in a DropMenu. 3 levels of page objects are shown in 
+the ListList JSON example, but by looking at the image you can tell that... 
+
+- 'All': page object, which is used as a MenuAnchor
+- 'All' has an items array of children, which are being used to display a Drop Menu
+- 'Ideas' (the top level shown in the JSON) is one of the children of this array, 
+and is of type `ListList`. It is being used to show a Content Panel with 3 
 
 
 ## Installation
@@ -145,18 +250,21 @@ Setting useButtons also adds the "asButton" style to the container.
 ...
 ```
 
-Internally the NavBar creates MenuAnchor components for each page object. A MenuAnchor 
-is a styled "a" link with a DropMenu components attached. 
+Internally the `NavBar` creates `MenuAnchor` components for each page object. A `MenuAnchor` 
+is a styled "a" link with a DropMenu component attached. 
 
-### or Approach 2 - Import DropMenu 
+### or Approach 2 - Import MenuAnchor 
 
-If you want to use the drop menu yourself directly without the NavBar you can import 
-and use the DropMenu.
+If you want to create a drop menu from your own anchor element, you can use the 
+`MenuAnchor` yourself directly without the NavBar. You supply your own markup within 
+the `MenuAnchor`. You can import and use the `MenuAnchor`:
 
 ```sh
-import { DropMenu } from "react-dropmenu"
+import { MenuAnchor } from "react-dropmenu"
 ```
-Then use the Drop Menu on your 
+Then use it with your won markup. The page object needs to have an array of pages 
+set as the `items` property of the `page`. The items will be used to attach a `DropMenu` 
+below your markup element. 
 ```sh
 <MenuAnchor 
     page={page}        // (object) one page data object, with child items
@@ -166,8 +274,10 @@ Then use the Drop Menu on your
 >
    {page.title}        // Anything here, will be wrapped inside an "a" anchor tag.
 </MenuAnchor>
-
 ```
+
+Lastly you can also use the `DropMenu` directly, to but this requires a fair bit more work. 
+Take a look at the internal implementation of the `MenuAnchor` to learn how it works. 
 
 ## Development setup
 
@@ -196,6 +306,10 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 https://github.com/SUPPLYcom/react-mega-menu  
 https://github.com/kamens/jQuery-menu-aim  
 
+<!--
+[![NPM Version][npm-image]][npm-url]
+[![Downloads Stats][npm-downloads]][npm-url]
+-->
 <!-- Markdown link & img dfn's -->
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/react-dropmenu
