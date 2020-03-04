@@ -7,5 +7,5 @@
 npm-debug.log*
 .vscode/*
 old/
-#.gitignore
+.gitignore
 #package-lock.json
