@@ -1,5 +1,5 @@
 import React from "react";
-import mountain from "../../img/Mountain.png";
+import mountain from "img/Mountain.png";
 
 export function MenuContentCard(_ref) {
     var item = _ref.item;

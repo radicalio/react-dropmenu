@@ -22,21 +22,26 @@ var NavBar = function NavBar(_ref) {
         classesList.push("asButton");
     }
     var classes = classesList.join(" ");
-    console.log("Pages", pages);
-    return React.createElement(
-        'div',
-        { className: classes },
-        pages.map(function (page, i) {
-            var id = "mega-menu-" + i;
-            return React.createElement(
-                MenuAnchor,
-                { page: page, navClass: navClass, id: id, key: i },
-                page.title
-            );
-            // TODO: For Gatsby use Link
-            // return <Link className={navClass} to={url} key={i}>{navitem.node.title}</Link>
-        })
-    );
+    //console.log("Pages", pages);
+    if (!pages || !page.length) {
+        return React.createElement(Fragment, null);
+    } else {
+        console.log("Pages", pages);
+        return React.createElement(
+            'div',
+            { className: classes },
+            pages.map(function (page, i) {
+                var id = "dropmenu-" + i;
+                return React.createElement(
+                    MenuAnchor,
+                    { page: page, navClass: navClass, id: id, key: i },
+                    page.title
+                );
+                // TODO: For Gatsby use Link
+                // return <Link className={navClass} to={url} key={i}>{navitem.node.title}</Link>
+            })
+        );
+    }
 };
 
 NavBar.defaultProps = {

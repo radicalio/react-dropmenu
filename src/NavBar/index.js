@@ -26,7 +26,7 @@ const NavBar = ({ pages, navClass, useButtons }) => {
         return (
             <div className={classes}>
                 {pages.map((page, i) => {
-                    const id = "mega-menu-" + i;
+                    const id = "dropmenu-" + i;
                     return (
                         <MenuAnchor page={page} navClass={navClass} id={id} key={i}>
                             {page.title}
